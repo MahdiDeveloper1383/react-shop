@@ -10,7 +10,7 @@ const Home = () => {
     return ( 
        <React.Fragment>
         <Header/>
-         <div>
+         <div className="flex flex-row flex-wrap ml-auto mr-auto p-5 gap-5 justify-center  items-center ">
           {Books.map((book)=>(
           <Porduct_Card Book={book}/>
           ))}

@@ -14,6 +14,7 @@ export interface IBook {
   isfavorite: boolean;
   weight: number;
   type: string[];
+  rating:number
   volumes: number;
   }
   

@@ -8,9 +8,15 @@ interface ProductCardProps {
 const Porduct_Card: React.FC<ProductCardProps> = ({ Book }) => {
     return (
         <div className={`w-full hover:shadow-2xl transition-shadow delay-100 max-w-sm ease-in bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 cursor-pointer ${Book.stock === 0 ? "filter blur-sm" : ""}`}>
-           <Link to={`/product/${Book.id}`}>
+            {Book.stock>0?(
+
+                <Link to={`/product/${Book.id}`}>
                 <img className="p-8 rounded-t-lg" src={Book.cover} alt="product image" />
            </Link>
+                ):(
+                    <img className="p-8 rounded-t-lg" src={Book.cover} alt="product image" />
+                )
+            }
             
             <div className="px-5 pb-5">
                 <a href="#">

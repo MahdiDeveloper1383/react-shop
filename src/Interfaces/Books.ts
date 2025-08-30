@@ -16,5 +16,6 @@ export interface IBook {
   type: string[];
   rating:number
   volumes: number;
+  quantity:number
   }
   

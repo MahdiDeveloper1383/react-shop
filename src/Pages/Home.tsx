@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Header from "../Components/Header";
 import img from '../assets/img/teamwork.jpeg'
 import Porduct_Card from "../Components/ProductCard";
 import axios from "axios";
 import { IBook } from "../Interfaces/Books";
 import GetProduct from "../Hooks/GetProducts";
+import { UserContext } from "../contexts/UserContext";
 const Home = () => {
   const {Books,loading,error} = GetProduct()
   const[filter,setFilter] = useState<string>('')
   const [genere,setGenre] = useState<string>('')
+  const {user} = useContext(UserContext)
   const filteredBooks = Books.filter((book)=>book.name.toLowerCase().includes(filter.toLowerCase())&&(genere === ''||book.type.includes(genere)))
     return ( 
        <React.Fragment>
@@ -23,7 +25,7 @@ const Home = () => {
             />
             <div >
               <ul> 
-                {6*5}
+                {user?.username}
               <li className="cursor-pointer" onClick={()=>setGenre('')}>All</li>
               <li className="cursor-pointer" onClick={()=>setGenre('Kids')}>Kids</li>
               <li className="cursor-pointer" onClick={()=>setGenre('Fiction')}>Fiction</li>

@@ -1,11 +1,29 @@
-import React from "react"
+import React, { use, useContext, useEffect, useState } from "react"
 import { IBook } from "../Interfaces/Books";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useCart } from "../Hooks/AddCart";
+import { UserContext } from "../contexts/UserContext";
 
 interface ProductCardProps {
     Book: IBook; // Define the type for the Book prop
 }
-const Porduct_Card: React.FC<ProductCardProps> = ({ Book }) => {
+const Porduct_Card: React.FC<ProductCardProps> = ({ Book }:{Book:IBook}) => {
+    const {addToCart}= useCart()
+    const [isLoggedIn,setIsLoggedIn] = useState(false)
+    const {user} = useContext(UserContext)
+    const navigate = useNavigate()
+    useEffect(()=>{
+        setIsLoggedIn(!!user)
+    },[user])
+    const handleaddtocart=()=>{
+        if (isLoggedIn) {
+            addToCart({...Book,quantity:1})
+        }else{
+            setTimeout(() => {
+                navigate('login')
+            }, 2000);
+        }
+    }
     return (
         <div className={`w-full hover:shadow-2xl transition-shadow delay-100 max-w-sm ease-in bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 cursor-pointer ${Book.stock === 0 ? "filter blur-sm" : ""}`}>
             {Book.stock>0?(
@@ -46,7 +64,7 @@ const Porduct_Card: React.FC<ProductCardProps> = ({ Book }) => {
                 </div>
                 <div className="flex items-center justify-between">
                     <span className="text-3xl font-bold text-gray-900 dark:text-white">${Book.price}</span>
-                    <a href="#" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add to cart</a>
+                    <a onClick={handleaddtocart} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add to cart</a>
                 </div>
             </div>
         </div>

@@ -109,9 +109,6 @@ const Login = () => {
                     </div>
                 </div>
             </div>
-            {users?.map((u) => (
-                <h1>{u.firstName}</h1>
-            ))}
         </React.Fragment>
     );
 }

@@ -1,12 +1,17 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { UserContext } from "../contexts/UserContext";
+import { useCart } from "../Hooks/AddCart";
 
 const Header = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false); // مدیریت وضعیت ورود کاربر
-
+    const {user} = useContext(UserContext)
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const {cart} = useCart()
+    useEffect(()=>{
+        setIsLoggedIn(!!user)
+    },[user])
     return ( 
         <div className="w-full h-10 sm:h-24 bg-slate-600 flex items-center justify-between">
-            {/* منوی سمت چپ */}
             <div className="left flex flex-row justify-center items-center pl-5">
                 <ul className="flex flex-row justify-between font-serif text-xs gap-5 sm:text-teal-300 text-cyan-500 md:text-2xl">
                     <li className="hover:text-white">
@@ -21,10 +26,9 @@ const Header = () => {
                 </ul>
             </div>
 
-            {/* منوی سمت راست */}
             <div className="right mr-5 w-56 h-16 border-[4px] rounded-full border-black flex items-center justify-center">
                 {isLoggedIn ? (
-                    // نمایش سبد خرید اگر کاربر لاگین کرده باشد
+    
                     <div className="flex items-center">
                         <Link to="/cart" className="flex items-center gap-2">
                             <svg
@@ -46,11 +50,10 @@ const Header = () => {
                                     d="M16.5 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm-7.5 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"
                                 />
                             </svg>
-                            <span className="text-xl font-bold text-green-500">Cart</span>
+                            <span className="text-xl font-bold text-green-500">{cart.length}</span>
                         </Link>
                     </div>
                 ) : (
-                    // نمایش لینک‌های "Log in" و "Sign Up" اگر کاربر لاگین نکرده باشد
                     <>
                         <div className="w-28 h-15 border-r-[5px] text-center flex justify-center border-black transition-colors hover:bg-green-300 rounded-full">
                             <h2 className="text-2xl font-bold pt-2 text-green-500">

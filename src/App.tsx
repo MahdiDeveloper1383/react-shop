@@ -7,9 +7,12 @@ import AboutUs from './Pages/About-us';
 import ContactUs from './Pages/Contact-us';
 import Product_deatails from './Pages/Product_Deatails';
 import { UserProvider } from './contexts/UserContext';
+import { CartProvider } from './contexts/ProductContext';
 
 function App() {
   return (
+    <React.Fragment>
+    <CartProvider>
     <UserProvider>
     <BrowserRouter>
       <Routes>
@@ -22,6 +25,8 @@ function App() {
       </Routes>
     </BrowserRouter>
     </UserProvider>
+    </CartProvider>
+    </React.Fragment>
   );
 }
 

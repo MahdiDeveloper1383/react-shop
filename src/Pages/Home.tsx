@@ -1,12 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState } from "react";
 import Header from "../Components/Header";
 import Porduct_Card from "../Components/ProductCard";
 import GetProduct from "../Hooks/GetProducts";
-import { useCart } from "../Hooks/AddCart";
 const Home = () => {
   const {Books,loading,error} = GetProduct()
   const[filter,setFilter] = useState<string>('')
-  const {cart} = useCart()
   const [genere,setGenre] = useState<string>('')
   const filteredBooks = Books.filter((book)=>book.name.toLowerCase().includes(filter.toLowerCase())&&(genere === ''||book.type.includes(genere)))
     return ( 
@@ -33,7 +31,7 @@ const Home = () => {
           </div>
          <div className="flex flex-row flex-wrap ml-auto mr-auto p-5 gap-5 justify-center  items-center ">
           {filteredBooks.map((book)=>(
-            <Porduct_Card Book={book}/>
+            <Porduct_Card key={book.id} Book={book}/>
           ))}
          </div>
           </div>

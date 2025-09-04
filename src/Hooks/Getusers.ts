@@ -6,7 +6,7 @@ const GetUsers = () => {
     const [users,setusers] = useState<User[]>([])
     useEffect(()=>{
         const fetchData = async()=>{
-                const response = await axios.get("/users/Users.json")
+                const response = await axios.get("https://687a0739abb83744b7eb0c77.mockapi.io/users")
                 setusers(response.data)
         }
         fetchData()

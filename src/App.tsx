@@ -8,6 +8,7 @@ import ContactUs from './Pages/Contact-us';
 import Product_deatails from './Pages/Product_Deatails';
 import { UserProvider } from './contexts/UserContext';
 import { CartProvider } from './contexts/ProductContext';
+import Cart_Shop from './Pages/Cart';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path='/about-us' element={<AboutUs/>}/>
         <Route path='/contact-us' element={<ContactUs/>}/>
         <Route path='/product/:id' element={<Product_deatails/>}/>
+        <Route path='/cart' element={<Cart_Shop/>}/>
       </Routes>
     </BrowserRouter>
     </UserProvider>

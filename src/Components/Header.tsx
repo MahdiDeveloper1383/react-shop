@@ -4,13 +4,13 @@ import { UserContext } from "../contexts/UserContext";
 import { useCart } from "../Hooks/AddCart";
 
 const Header = () => {
-    const {user} = useContext(UserContext)
+    const { user } = useContext(UserContext)
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const {cart} = useCart()
-    useEffect(()=>{
+    const { cart } = useCart()
+    useEffect(() => {
         setIsLoggedIn(!!user)
-    },[user])
-    return ( 
+    }, [user])
+    return (
         <div className="w-full h-10 sm:h-24 bg-slate-600 flex items-center justify-between">
             <div className="left flex flex-row justify-center items-center pl-5">
                 <ul className="flex flex-row justify-between font-serif text-xs gap-5 sm:text-teal-300 text-cyan-500 md:text-2xl">
@@ -28,7 +28,7 @@ const Header = () => {
 
             <div className="right mr-5 w-56 h-16 border-[4px] rounded-full border-black flex items-center justify-center">
                 {isLoggedIn ? (
-    
+
                     <div className="flex items-center">
                         <Link to="/cart" className="flex items-center gap-2">
                             <svg

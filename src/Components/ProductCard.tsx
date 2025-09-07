@@ -1,4 +1,4 @@
-import React, {  useContext, useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { IBook } from "../Interfaces/Books";
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../Hooks/AddCart";
@@ -7,18 +7,18 @@ import { UserContext } from "../contexts/UserContext";
 interface ProductCardProps {
     Book: IBook; // Define the type for the Book prop
 }
-const Porduct_Card: React.FC<ProductCardProps> = ({ Book }:{Book:IBook}) => {
-    const {addToCart}= useCart()
-    const [isLoggedIn,setIsLoggedIn] = useState(false)
-    const {user} = useContext(UserContext)
+const Porduct_Card: React.FC<ProductCardProps> = ({ Book }: { Book: IBook }) => {
+    const { addToCart } = useCart()
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const { user } = useContext(UserContext)
     const navigate = useNavigate()
-    useEffect(()=>{
+    useEffect(() => {
         setIsLoggedIn(!!user)
-    },[user])
-    const handleaddtocart=()=>{
+    }, [user])
+    const handleaddtocart = () => {
         if (isLoggedIn) {
-            addToCart({...Book,quantity:1})
-        }else{
+            addToCart({ ...Book, quantity: 1 })
+        } else {
             setTimeout(() => {
                 navigate('login')
             }, 2000);
@@ -26,16 +26,16 @@ const Porduct_Card: React.FC<ProductCardProps> = ({ Book }:{Book:IBook}) => {
     }
     return (
         <div className={`w-full hover:shadow-2xl transition-shadow delay-100 max-w-sm ease-in bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 cursor-pointer ${Book.stock === 0 ? "filter blur-sm" : ""}`}>
-            {Book.stock>0?(
+            {Book.stock > 0 ? (
 
                 <Link to={`/product/${Book.id}`}>
-                <img className="p-8 rounded-t-lg" src={Book.cover} alt="product image" />
-           </Link>
-                ):(
                     <img className="p-8 rounded-t-lg" src={Book.cover} alt="product image" />
-                )
+                </Link>
+            ) : (
+                <img className="p-8 rounded-t-lg" src={Book.cover} alt="product image" />
+            )
             }
-            
+
             <div className="px-5 pb-5">
                 <a href="#">
                     <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{Book.name}</h5>
@@ -46,10 +46,10 @@ const Porduct_Card: React.FC<ProductCardProps> = ({ Book }:{Book:IBook}) => {
                             <svg
                                 key={i}
                                 className={`w-4 h-4 ${Book.rating >= i + 1
-                                        ? "text-yellow-300"
-                                        : Book.rating > i && Book.rating < i + 1
-                                            ? "text-yellow-200"
-                                            : "text-gray-200 dark:text-gray-600"
+                                    ? "text-yellow-300"
+                                    : Book.rating > i && Book.rating < i + 1
+                                        ? "text-yellow-200"
+                                        : "text-gray-200 dark:text-gray-600"
                                     }`}
                                 aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg"

@@ -6,14 +6,14 @@ interface CartContextType {
   removeFromCart: (id: string) => void;
   clearCart: () => void;
 }
-export const CartContext =createContext<CartContextType>({
-    cart:[],
-    addToCart:()=>{},
-    removeFromCart:()=>{},
-    clearCart:()=>{}
+export const CartContext = createContext<CartContextType>({
+  cart: [],
+  addToCart: () => { },
+  removeFromCart: () => { },
+  clearCart: () => { }
 })
-export const CartProvider=({children}:{children:ReactNode})=>{
-    const [cart, setCart] = useState<IBook[]>([]);
+export const CartProvider = ({ children }: { children: ReactNode }) => {
+  const [cart, setCart] = useState<IBook[]>([]);
 
   const addToCart = (item: IBook) => {
     setCart((prev) => {
@@ -39,4 +39,3 @@ export const CartProvider=({children}:{children:ReactNode})=>{
     </CartContext.Provider>
   );
 }
- 

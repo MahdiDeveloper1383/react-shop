@@ -1,13 +1,14 @@
 import React, { useContext, useEffect, useState } from "react"
 import { IBook } from "../Interfaces/Books";
 import { Link, useNavigate } from "react-router-dom";
-import { useCart } from "../Hooks/AddCart";
+import { useCart } from "../Hooks/Carthook";
 import { UserContext } from "../contexts/UserContext";
+import Star from "./Star";
 
 interface ProductCardProps {
     Book: IBook; // Define the type for the Book prop
 }
-const Porduct_Card: React.FC<ProductCardProps> = ({ Book }: { Book: IBook }) => {
+const Product_Card: React.FC<ProductCardProps> = ({ Book }: { Book: IBook }) => {
     const { addToCart } = useCart()
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const { user } = useContext(UserContext)
@@ -43,21 +44,7 @@ const Porduct_Card: React.FC<ProductCardProps> = ({ Book }: { Book: IBook }) => 
                 <div className="flex items-center mt-2.5 mb-5">
                     <div className="flex items-center space-x-1 rtl:space-x-reverse">
                         {Array.from({ length: 5 }).map((_, i) => (
-                            <svg
-                                key={i}
-                                className={`w-4 h-4 ${Book.rating >= i + 1
-                                    ? "text-yellow-300"
-                                    : Book.rating > i && Book.rating < i + 1
-                                        ? "text-yellow-200"
-                                        : "text-gray-200 dark:text-gray-600"
-                                    }`}
-                                aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="currentColor"
-                                viewBox="0 0 22 20"
-                            >
-                                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                            </svg>
+                            <Star key={i} index={i} rating={Book.rating} />
                         ))}
                     </div>
                     <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-sm dark:bg-blue-200 dark:text-blue-800 ms-3">{Book.rating}</span>
@@ -75,4 +62,4 @@ const Porduct_Card: React.FC<ProductCardProps> = ({ Book }: { Book: IBook }) => 
 
 }
 
-export default Porduct_Card;
+export default Product_Card;

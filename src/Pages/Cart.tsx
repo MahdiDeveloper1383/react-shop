@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "../Components/Header";
-import { useCart } from "../Hooks/AddCart";
+import { useCart } from "../Hooks/Carthook";
 import { IBook } from "../Interfaces/Books";
 import Basket_card from "../Components/Basket_card";
 const Cart_Shop = () => {
@@ -49,7 +49,7 @@ const Cart_Shop = () => {
                         </thead>
                         {
                             products.map((product)=>(
-                                <Basket_card product={product}/>
+                                <Basket_card key={product.id} product={product}/>
                             ))
                         }
                     </table>

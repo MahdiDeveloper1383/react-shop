@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { IBook } from "../Interfaces/Books";
 
 const Basket_card = ({ product }: { product: IBook }) => {
-
+    const totalPriceofproduct = product.price * product.quantity
     return (
         <tbody>
             <tr>
@@ -20,7 +20,7 @@ const Basket_card = ({ product }: { product: IBook }) => {
                         <button className="border rounded-md py-2 px-4 ml-2">+</button>
                     </div>
                 </td>
-                <td className="py-4">${product.price}</td>
+                <td className="py-4">${totalPriceofproduct}</td>
             </tr>
         </tbody>
     );

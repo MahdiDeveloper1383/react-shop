@@ -1,18 +1,40 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { IBook } from "../Interfaces/Books";
 import GetProduct from "../Hooks/GetProducts";
 import Header from "../Components/Header";
+import Star from "../Components/Star";
+import { useCart } from "../Hooks/Carthook";
+import { UserContext } from "../contexts/UserContext";
 const Product_deatails = () => {
   const { id } = useParams()
-  const [book, setbook] = useState<IBook>()
+  const [Book, setbook] = useState<IBook>()
   const { Books } = GetProduct()
+  const {addToCart} = useCart()
+  const [Quantity,setquantity] = useState<number>(1)
+  const {user} = useContext(UserContext)
+  const [isLoggedIn,setIsLoggedIn] = useState(false)
+  const navigate = useNavigate()
   useEffect(() => {
     if (Books.length > 0 && id) {
       const foundBook = Books.find((book) => book.id.toString() === id);
       setbook(foundBook);
     }
-  }, [Books, id]);
+    setIsLoggedIn(!!user)
+  }, [Books, id,user]);
+  const handleaddtocart = () => {
+        if (isLoggedIn) {
+            if (Book && Book.id) {
+                addToCart({ ...Book, quantity: Quantity });
+            } else {
+                console.error("Book or Book.id is undefined");
+            }
+        } else {
+            setTimeout(() => {
+                navigate('/login')
+            }, 2000);
+        }
+    }
   return (
     <React.Fragment>
       <Header />
@@ -22,58 +44,32 @@ const Product_deatails = () => {
   
       <div className="w-full md:w-1/2 px-4 mb-8">
 
-       <img src={book?.cover} alt="Product"
+       <img src={Book?.cover} alt="Product"
                     className="w-full h-auto rounded-lg shadow-md mb-4" id="mainImage"/>
       </div>
 
       <div className="w-full md:w-1/2 px-4">
-        <h2 className="text-3xl font-bold mb-2">{book?.name}</h2>
-        <p className="text-gray-600 mb-4">{book?.athour}</p>
+        <h2 className="text-3xl font-bold mb-2">{Book?.name}</h2>
+        <p className="text-gray-600 mb-4">{Book?.athour}</p>
         <div className="mb-4">
-          <span className="text-2xl font-bold mr-2">${book?.price}</span>
+          <span className="text-2xl font-bold mr-2">${Book?.price}</span>
         </div>
         <div className="flex items-center mb-4">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-            className="size-6 text-yellow-500">
-            <path fill-rule="evenodd"
-              d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
-              clip-rule="evenodd" />
-          </svg>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-            className="size-6 text-yellow-500">
-            <path fill-rule="evenodd"
-              d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
-              clip-rule="evenodd" />
-          </svg>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-            className="size-6 text-yellow-500">
-            <path fill-rule="evenodd"
-              d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
-              clip-rule="evenodd" />
-          </svg>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-            className="size-6 text-yellow-500">
-            <path fill-rule="evenodd"
-              d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
-              clip-rule="evenodd" />
-          </svg>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-            className="size-6 text-yellow-500">
-            <path fill-rule="evenodd"
-              d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
-              clip-rule="evenodd" />
-          </svg>
-          <span className="ml-2 text-gray-600">{book?.rating}</span>
+          {Array.from({ length: 5 }).map((_, i) => (
+                            <Star key={i} index={i} rating={Book?.rating ?? 0} />
+                        ))}
+          <span className="ml-2 text-gray-600">{Book?.rating}</span>
         </div>
-        <p className="text-gray-700 mb-6">{book?.description}</p>
+        <p className="text-gray-700 mb-6">{Book?.description}</p>
         <div className="mb-6">
           <label  className="block text-sm font-medium text-gray-700 mb-1">Quantity:</label>
-          <input type="number" id="quantity" name="quantity" min="1" value="1"
+          <input type="number" id="quantity" name="quantity" min="1" value={Quantity} onChange={(e)=>setquantity(Number(e.target.value))}
                         className="w-12 text-center rounded-md border-gray-300  shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"/>
         </div>
 
         <div className="flex space-x-4 mb-6">
           <button
+          onClick={handleaddtocart}
                         className="bg-indigo-600 flex gap-2 items-center text-white px-6 py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke-width="1.5" stroke="currentColor" className="size-6">
@@ -82,27 +78,18 @@ const Product_deatails = () => {
                         </svg>
                         Add to Cart
                     </button>
-          <button
-                        className="bg-gray-200 flex gap-2 items-center  text-gray-800 px-6 py-2 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke-width="1.5" stroke="currentColor" className="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
-                        </svg>
-                        Wishlist
-                    </button>
         </div>
 
         <div>
           <h3 className="text-lg font-semibold mb-2">Key Features:</h3>
           <ul className="list-disc list-inside text-gray-700">
-            <li>Genere: {book?.genere.join(", ")}</li>
-            <li>Publisher: {book?.publisher}</li>
-            <li>Publish Year: {book?.publication_year}</li>
-            <li>Pages: {book?.page_count}</li>
-            <li>Weight: {book?.weight}kg</li>
-            <li>language: {book?.language.join(", ")}</li>
-            <li>Volumes: {book?.volumes}</li>
+            <li>Genere: {Book?.genere.join(", ")}</li>
+            <li>Publisher: {Book?.publisher}</li>
+            <li>Publish Year: {Book?.publication_year}</li>
+            <li>Pages: {Book?.page_count}</li>
+            <li>Weight: {Book?.weight}kg</li>
+            <li>language: {Book?.language.join(", ")}</li>
+            <li>Volumes: {Book?.volumes}</li>
           </ul>
         </div>
       </div>

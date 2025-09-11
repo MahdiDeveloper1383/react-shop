@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import Header from "../Components/Header";
 import GetUsers from "../Hooks/Getusers";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";

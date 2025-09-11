@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
-import GetUsers from "../Hooks/Getusers";
+import GetUsers from "../../Hooks/Getusers";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../contexts/UserContext";
+import { UserContext } from "../../contexts/UserContext";
 
 const Login = () => {
     const { users } = GetUsers()
@@ -13,12 +13,17 @@ const Login = () => {
         e.preventDefault()
         const user = users.find((u)=>u.email=== email&&u.password===password)
         if (user) {
-            navigate('/')
+            if (user.role === 'admin') {
+                navigate('/admin')
+            }else{
+                navigate('/')
+            }
             setUser(user)
         }
     }
     return (
         <React.Fragment>
+            <title>Login</title>
             <div className="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
                 <div className="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
                     <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
@@ -28,7 +33,7 @@ const Login = () => {
                         </div>
                         <div className="mt-12 flex flex-col items-center">
                             <h1 className="text-2xl xl:text-3xl font-extrabold">
-                                Sign up
+                                Login
                             </h1>
                             <div className="w-full flex-1 mt-8">
                                 <div className="flex flex-col items-center">
@@ -83,7 +88,7 @@ const Login = () => {
                                                 <path d="M20 8v6M23 11h-6" />
                                             </svg>
                                             <span className="ml-3">
-                                                Sign Up
+                                                Login
                                             </span>
                                         </button>
                                     </form>

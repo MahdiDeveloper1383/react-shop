@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { IBook } from "../Interfaces/Books";
+import { IBook } from "../../Interfaces/Books";
 import { useState } from "react";
 
 const Basket_card = ({ product }: { product: IBook }) => {

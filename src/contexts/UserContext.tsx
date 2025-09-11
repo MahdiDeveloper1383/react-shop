@@ -1,6 +1,7 @@
 import { createContext, ReactNode, useState } from "react";
 interface User {
   username: string;
+  role:"user"|"admin"
 }
 
 interface UserContextType {

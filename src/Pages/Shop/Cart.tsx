@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Header from "../Components/Header";
-import { useCart } from "../Hooks/Carthook";
-import { IBook } from "../Interfaces/Books";
-import Basket_card from "../Components/Basket_card";
+import Header from "../../Components/Shop/Header";
+import { useCart } from "../../Hooks/Carthook";
+import { IBook } from "../../Interfaces/Books";
+import Basket_card from "../../Components/Shop/Basket_card";
 const Cart_Shop = () => {
     const {cart} = useCart()
     const [products,setproducts] = useState<IBook[]>([])
@@ -31,6 +31,7 @@ const Cart_Shop = () => {
     
     return ( 
         <React.Fragment>
+            <title>Basket</title>
             <Header/>
             <div className="bg-gray-100 h-screen py-8">
     <div className="container mx-auto px-4">

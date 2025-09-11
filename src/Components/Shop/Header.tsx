@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-import { UserContext } from "../contexts/UserContext";
-import { useCart } from "../Hooks/Carthook";
+import { UserContext } from "../../contexts/UserContext";
+import { useCart } from "../../Hooks/Carthook";
+
 
 const Header = () => {
     const { user,setUser } = useContext(UserContext)

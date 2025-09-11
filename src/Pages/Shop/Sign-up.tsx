@@ -1,11 +1,11 @@
 import React from "react";
-import Header from "../Components/Header";
+import Header from "../../Components/Shop/Header";
 import { Link, useNavigate } from "react-router-dom";
 import * as yup from 'yup'
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup"
 import axios from "axios";
-import GetUsers from "../Hooks/Getusers";
+import GetUsers from "../../Hooks/Getusers";
 interface SignUpFormData {
   firstName: string;
   lastName: string;
@@ -47,6 +47,7 @@ const SignUp = () => {
   }
     return ( 
         <React.Fragment>
+          <title>Sign Up</title>
             <Header/>
             <section className="flex flex-col items-center pt-6">
   <div

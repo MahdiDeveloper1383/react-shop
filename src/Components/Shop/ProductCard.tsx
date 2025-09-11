@@ -1,14 +1,14 @@
 import React, { useContext, useEffect, useState } from "react"
-import { IBook } from "../Interfaces/Books";
 import { Link, useNavigate } from "react-router-dom";
-import { useCart } from "../Hooks/Carthook";
-import { UserContext } from "../contexts/UserContext";
 import Star from "./Star";
+import { UserContext } from "../../contexts/UserContext";
+import { useCart } from "../../Hooks/Carthook";
+import { IBook } from "../../Interfaces/Books";
 
 interface ProductCardProps {
     Book: IBook; // Define the type for the Book prop
 }
-const Product_Card: React.FC<ProductCardProps> = ({ Book }: { Book: IBook }) => {
+const Product_Card: React.FC<ProductCardProps> = ({ Book }: { Book: IBook}) => {
     const { addToCart } = useCart()
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const { user } = useContext(UserContext)

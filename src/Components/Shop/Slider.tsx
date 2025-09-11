@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Use_Slider from "../Hooks/UseSlider";
+import Use_Slider from "../../Hooks/UseSlider";
 
 const Slider = () => {
   const Img = [

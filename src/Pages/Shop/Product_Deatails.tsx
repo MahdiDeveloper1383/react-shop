@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { IBook } from "../Interfaces/Books";
-import GetProduct from "../Hooks/GetProducts";
-import Header from "../Components/Header";
-import Star from "../Components/Star";
-import { useCart } from "../Hooks/Carthook";
-import { UserContext } from "../contexts/UserContext";
+import { IBook } from "../../Interfaces/Books";
+import GetProduct from "../../Hooks/GetProducts";
+import Header from "../../Components/Shop/Header";
+import Star from "../../Components/Shop/Star";
+import { useCart } from "../../Hooks/Carthook";
+import { UserContext } from "../../contexts/UserContext";
 const Product_deatails = () => {
   const { id } = useParams()
   const [Book, setbook] = useState<IBook>()
@@ -37,6 +37,7 @@ const Product_deatails = () => {
     }
   return (
     <React.Fragment>
+      <title>Product Details</title>
       <Header />
       <div className="bg-gray-100">
   <div className="container mx-auto px-4 py-8">

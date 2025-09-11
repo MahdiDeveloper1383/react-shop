@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Header from "../Components/Header";
-import Product_Card from "../Components/ProductCard";
-import GetProduct from "../Hooks/GetProducts";
-import Slider from "../Components/Slider";
-import Filters from "../Components/Filter";
+import Header from "../../Components/Shop/Header";
+import Product_Card from "../../Components/Shop/ProductCard";
+import GetProduct from "../../Hooks/GetProducts";
+import Slider from "../../Components/Shop/Slider";
+import Filters from "../../Components/Shop/Filter";
 const Home = () => {
   const { Books, loading, error } = GetProduct();
   const [filter, setFilter] = useState({
@@ -30,6 +30,7 @@ const Home = () => {
   const CurrentBooks = filteredBooks.slice(indexofFirstProduct,indexofLastProduct)
   return (
     <React.Fragment>
+      <title>Home</title>
       <Header />
       <Slider/>
       <div className="flex justify-between w-full mt-5">

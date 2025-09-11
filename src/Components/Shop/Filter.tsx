@@ -1,5 +1,5 @@
 import React from "react";
-import useFilters from "../Hooks/Usefilter";
+import useFilters from "../../Hooks/Usefilter";
 
 interface FiltersProps {
   onChange: (filter: {

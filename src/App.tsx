@@ -17,7 +17,7 @@ function App() {
     <React.Fragment>
     <CartProvider>
     <UserProvider>
-    <HashRouter>
+    <BrowserRouter>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login/>}/>
@@ -33,7 +33,7 @@ function App() {
         }>
         </Route>
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
     </UserProvider>
     </CartProvider>
     </React.Fragment>

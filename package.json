@@ -2,7 +2,7 @@
   "name": "react-shop",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://username.github.io/react-shop",
+  "homepage": "https://mahdideveloper1383.github.io/react-shop",
   "engines": {
     "node": "18.x",
     "npm": "9.x"
@@ -54,6 +54,7 @@
     ]
   },
   "devDependencies": {
+    "@types/aria-query": "^5.0.4",
     "react-scripts": "^5.0.1",
     "tailwindcss": "^3.4.17"
   }

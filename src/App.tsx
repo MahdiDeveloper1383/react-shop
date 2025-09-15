@@ -17,7 +17,7 @@ function App() {
     <React.Fragment>
     <CartProvider>
     <UserProvider>
-    <BrowserRouter>
+    <BrowserRouter basename='/react-shop'>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login/>}/>

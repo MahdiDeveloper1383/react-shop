@@ -15,9 +15,9 @@ const Header = () => {
         setUser(null)
     }
     return (
-     <div className="w-full h-12 mb-4 sm:h-20 bg-slate-600 flex items-center justify-between px-5">
+     <div className="w-[648px] h-12  mb-4 sm:h-20 lg:w-full bg-slate-600 flex items-center justify-between px-5">
       {/* Left side */}
-      <ul className="flex flex-row gap-6 font-bold text-sm sm:text-2xl text-cyan-500">
+      <ul className="flex flex-row gap-3 lg:gap-6 font-bold text-xl md:text-xl lg:text-2xl text-cyan-500">
         <li className="hover:text-white">
           <Link to="/">Home</Link>
         </li>
@@ -30,7 +30,7 @@ const Header = () => {
       </ul>
 
       {/* Right side */}
-      <div className="flex items-center gap-6">
+      <div className="flex items-center gap-2">
         {isLoggedIn ? (
           <>
             {/* Cart */}

@@ -2,6 +2,7 @@
   "name": "react-shop",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://username.github.io/react-shop",
   "engines": {
     "node": "18.x",
     "npm": "9.x"
@@ -17,6 +18,7 @@
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "axios": "^1.10.0",
+    "gh-pages": "^6.3.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-hook-form": "^7.62.0",
@@ -28,6 +30,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

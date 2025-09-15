@@ -3,11 +3,12 @@ import Use_Slider from "../../Hooks/UseSlider";
 
 const Slider = () => {
   const Img = [
-    "/Img/Carsoul/Carsoul1.webp",
-    "/Img/Carsoul/Carsoul2.jpg",
-    "/Img/Carsoul/Carsoul3.webp",
-    "/Img/Carsoul/Carsoul4.webp",
-  ];
+  process.env.PUBLIC_URL + "/Img/Carsoul/Carsoul1.webp",
+  process.env.PUBLIC_URL + "/Img/Carsoul/Carsoul2.jpg",
+  process.env.PUBLIC_URL + "/Img/Carsoul/Carsoul3.webp",
+  process.env.PUBLIC_URL + "/Img/Carsoul/Carsoul4.webp",
+];
+
   const {currentIndex,nextSlide,prevSlide} = Use_Slider(Img);
   return (
     <div className="flex items-center w-[640px] lg:w-full">

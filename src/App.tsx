@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom'
 import Home from './Pages/Shop/Home';
 import Login from './Pages/Shop/Login';
 import SignUp from './Pages/Shop/Sign-up';
@@ -17,9 +17,8 @@ function App() {
     <React.Fragment>
     <CartProvider>
     <UserProvider>
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
-  
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login/>}/>
         <Route path='/sign-up' element={<SignUp/>}/>
@@ -34,7 +33,7 @@ function App() {
         }>
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
     </UserProvider>
     </CartProvider>
     </React.Fragment>

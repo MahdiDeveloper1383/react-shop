@@ -4,6 +4,7 @@ import Product_Card from "../../Components/Shop/ProductCard";
 import GetProduct from "../../Hooks/GetProducts";
 import Slider from "../../Components/Shop/Slider";
 import Filters from "../../Components/Shop/Filter";
+import Footer from "../../Components/Shop/footer";
 const Home = () => {
   const { Books, loading, error } = GetProduct();
   const [filter, setFilter] = useState({
@@ -53,6 +54,7 @@ const Home = () => {
         </div>
        
       </div>
+      <Footer/>
     </React.Fragment>
   );
 };

@@ -3,6 +3,7 @@ import Header from "../../Components/Shop/Header";
 import { useCart } from "../../Hooks/Carthook";
 import { IBook } from "../../Interfaces/Books";
 import Basket_card from "../../Components/Shop/Basket_card";
+import Footer from "../../Components/Shop/footer";
 const Cart_Shop = () => {
     const {cart} = useCart()
     const [products,setproducts] = useState<IBook[]>([])
@@ -82,6 +83,7 @@ const Cart_Shop = () => {
         </div>
     </div>
 </div>
+    <Footer/>
         </React.Fragment>
      );
 }

@@ -6,6 +6,7 @@ import Header from "../../Components/Shop/Header";
 import Star from "../../Components/Shop/Star";
 import { useCart } from "../../Hooks/Carthook";
 import { UserContext } from "../../contexts/UserContext";
+import Footer from "../../Components/Shop/footer";
 const Product_deatails = () => {
   const { id } = useParams()
   const [Book, setbook] = useState<IBook>()
@@ -97,6 +98,7 @@ const Product_deatails = () => {
     </div>
   </div>
 </div>
+<Footer/>
           </React.Fragment>
           );
 }

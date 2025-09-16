@@ -2,6 +2,8 @@ import React, { useContext, useState } from "react";
 import GetUsers from "../../Hooks/Getusers";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../contexts/UserContext";
+import Footer from "../../Components/Shop/footer";
+import Header from "../../Components/Shop/Header";
 
 const Login = () => {
     const { users } = GetUsers()
@@ -24,6 +26,7 @@ const Login = () => {
     return (
         <React.Fragment>
             <title>Login</title>
+            <Header/>
             <div className="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
                 <div className="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
                     <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
@@ -113,6 +116,7 @@ const Login = () => {
                     </div>
                 </div>
             </div>
+            <Footer/>
         </React.Fragment>
     );
 }

@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup"
 import axios from "axios";
 import GetUsers from "../../Hooks/Getusers";
+import Footer from "../../Components/Shop/footer";
 interface SignUpFormData {
   firstName: string;
   lastName: string;
@@ -99,6 +100,7 @@ const SignUp = () => {
     </div>
   </div>
 </section>
+<Footer/>
         </React.Fragment>
      );
 }

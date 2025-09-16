@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "../../Components/Shop/Header";
+import Footer from "../../Components/Shop/footer";
 
 const ContactUs = () => {
     return ( 
@@ -28,14 +29,40 @@ const ContactUs = () => {
                           <input type="text" className="border-2 p-1 pr-9 bg-gray-100" />
                         </div>
                         <div className="flex flex-col">
-                            <label htmlFor="" className="text-xl text-cyan-300 font-bold">Last Name:</label>
-                        <input type="text" className="border-2 p-1 pr-9 bg-gray-100"  />
+                            <label htmlFor="lastname" className="text-xl text-cyan-300 font-bold">Last Name:</label>
+                            <input type="text" className="border-2 p-1 pr-9 bg-gray-100"  />
                         </div>
                         </div>
+                        <div className="flex flex-col mt-11">
+                            <div className="flex flex-col">
+                                <label htmlFor="email" className="text-xl text-cyan-300 font-bold">Email</label>
+                                <input type="email"  className="border-2 p-2 pr-9 bg-gray-100" name="" id="" />
+                            </div>
+                            <div className="flex flex-col mt-4">
+                                <label htmlFor="message" className="mb-3 text-xl text-cyan-300 font-bold">Your message:</label>
+                                <textarea rows={10} className="border-2 p-1 pr-9 bg-gray-100" name="" id=""></textarea>
+                            </div>
+                        </div>
+                        <div className="flex justify-between w-full px-3 mt-3">
+                    <div className="md:flex md:items-center">
+                        <label className="block text-gray-500 font-bold">
+                            <input className="mr-2 leading-tight" type="checkbox"/>
+                            <span className="text-sm">
+                                Send me your newsletter!
+                            </span>
+                        </label>
+                    </div>
+                    <button
+                        className="shadow bg-indigo-600 hover:bg-indigo-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-6 rounded"
+                        type="submit">
+                        Send Message
+                    </button>
+                </div>
                     </form>
                 </div>
             </div>
             </div>
+            <Footer/>
         </React.Fragment>
      );
 }

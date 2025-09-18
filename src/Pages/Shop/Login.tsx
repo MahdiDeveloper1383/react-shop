@@ -6,9 +6,10 @@ import Footer from "../../Components/Shop/footer";
 import Header from "../../Components/Shop/Header";
 
 const Login = () => {
-    const { users } = GetUsers()
+    const { data:users = [] } = GetUsers()
     const [email, setemail] = useState('')
     const [password, setpassword] = useState('')
+    const [error,seterror] = useState<string>('')
     const navigate = useNavigate()
     const {setUser} = useContext(UserContext)
     const loginhandle=async(e:React.FormEvent)=>{
@@ -21,6 +22,8 @@ const Login = () => {
                 navigate('/')
             }
             setUser(user)
+        }else{
+            seterror('Email or password is wrong')
         }
     }
     return (
@@ -82,6 +85,7 @@ const Login = () => {
                                         <input
                                             className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
                                             type="password" placeholder="Password" onChange={(e) => setpassword(e.target.value)} />
+                                            {error && <p className="text-2xl font-bold text-red-600">{error}</p>}
                                         <button
                                             className="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
                                             <svg className="w-6 h-6 -ml-2" fill="none" stroke="currentColor" stroke-width="2"

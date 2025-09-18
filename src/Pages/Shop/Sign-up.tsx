@@ -4,9 +4,9 @@ import { Link, useNavigate } from "react-router-dom";
 import * as yup from 'yup'
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup"
-import axios from "axios";
 import GetUsers from "../../Hooks/Getusers";
 import Footer from "../../Components/Shop/footer";
+import { CreateUser } from "../../Hooks/Createuser";
 interface SignUpFormData {
   firstName: string;
   lastName: string;
@@ -27,24 +27,28 @@ const schema = yup.object({
     repassword:yup.string().oneOf([yup.ref('password')],'Passwords must match').required('Please confirm your password')
   })
 const SignUp = () => {
-  const {users} = GetUsers()
+  const {data:users = []} = GetUsers()
+  const createuser = CreateUser()
   const {register,handleSubmit,formState:{errors}} = useForm({
     resolver: yupResolver(schema)
   })
   const navigate = useNavigate()
   const onsubmit=async(data:SignUpFormData)=>{
-    try{
       const {repassword,...userdata} = data
       const usertosend={
         ...userdata,
-        role:'user',
-        id:String(users.length+1)
+        role:'user' as const
       }
-      const response = await axios.post("https://687a0739abb83744b7eb0c77.mockapi.io/users", usertosend,{ headers: { "Content-Type": "application/json" } });
-      navigate('/login')
-    }catch(err){
-      alert('Sign up faild')
-    }
+      
+      createuser.mutate(usertosend,{
+        onSuccess:()=>{
+          navigate('/login')
+        },
+        onError:(err:unknown)=>{
+          alert(err)
+        }
+      })
+   
   }
     return ( 
         <React.Fragment>

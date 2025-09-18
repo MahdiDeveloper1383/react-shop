@@ -6,7 +6,7 @@ import Slider from "../../Components/Shop/Slider";
 import Filters from "../../Components/Shop/Filter";
 import Footer from "../../Components/Shop/footer";
 const Home = () => {
-  const { Books, loading, error } = GetProduct();
+  const { data:Books =[], isLoading, error } = GetProduct();
   const [filter, setFilter] = useState({
     filter: "",
     genre: "",
@@ -36,22 +36,26 @@ const Home = () => {
       <Slider/>
       <div className="flex justify-between w-full mt-5">
           <Filters onChange={setFilter}/>
+          
         <div className="flex flex-row flex-wrap ml-auto mr-auto p-5 gap-5 justify-center  items-center ">
-          {CurrentBooks.map((book) => (
-            <Product_Card key={book.id} Book={book} />
-          ))}
+          {isLoading && <h3 className="text-9xl font-bold text-yellow-400">loading...</h3>}
+          {error && <h3 className="text-9xl font-bold text-red-800">Fail</h3>}
+            {!error&& !isLoading &&CurrentBooks.map((book) => (
+              <Product_Card key={book.id} Book={book} />
+            ))}
            <div className="flex justify-center gap-2 mt-4">
   {Array.from({ length: Math.ceil(filteredBooks.length / ItemPerPage) }, (_, i) => (
     <button
-      key={i}
-      onClick={() => serCurrentPage(i + 1)}
-      className={`px-3 py-1 rounded ${CurrentPage === i + 1 ? "bg-blue-500 text-white" : "bg-gray-200"}`}
+    key={i}
+    onClick={() => serCurrentPage(i + 1)}
+    className={`px-3 py-1 rounded ${CurrentPage === i + 1 ? "bg-blue-500 text-white" : "bg-gray-200"}`}
     >
       {i + 1}
     </button>
   ))}
 </div>
         </div>
+
        
       </div>
       <Footer/>

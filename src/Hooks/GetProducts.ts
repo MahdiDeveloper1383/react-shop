@@ -1,25 +1,15 @@
-import { useEffect, useState } from "react";
-import { IBook } from "../Interfaces/Books";
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { IBook } from "../Interfaces/Books";
 
 const GetProduct = () => {
-    const [Books,setBooks] = useState<IBook[]>([])
-    const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
-  useEffect(()=>{
-    const fetchData = async ()=>{
-        try{
-        const response = await axios.get("https://687a0739abb83744b7eb0c77.mockapi.io/Books")
-        setBooks(response.data)
-        }catch (err: any) {
-            setError(err.message || "An error occurred");
-          } finally {
-            setLoading(false);
-          }
-    }
-    fetchData()
-  },[])
-    return {Books,loading,error};
+    return useQuery<IBook[]>({
+      queryKey:['Books'],
+      queryFn: async()=>{
+        const respone = await axios.get('https://687a0739abb83744b7eb0c77.mockapi.io/Books')
+        return respone.data
+      }
+    })
 }
  
 export default GetProduct;

@@ -10,7 +10,7 @@ import Footer from "../../Components/Shop/footer";
 const Product_deatails = () => {
   const { id } = useParams()
   const [Book, setbook] = useState<IBook>()
-  const { Books } = GetProduct()
+  const { data: Books =[] } = GetProduct()
   const {addToCart} = useCart()
   const [Quantity,setquantity] = useState<number>(1)
   const {user} = useContext(UserContext)

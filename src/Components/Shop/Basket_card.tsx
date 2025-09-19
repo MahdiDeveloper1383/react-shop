@@ -1,31 +1,43 @@
 import { Link } from "react-router-dom";
 import { IBook } from "../../Interfaces/Books";
 import { useState } from "react";
+import { useCart } from "../../Hooks/Carthook";
 
 const Basket_card = ({ product }: { product: IBook }) => {
     const [count,setCount] = useState<number>(product.quantity)
+    const {addToCart,removeFromCart} = useCart()
     const totalPriceofproduct = product.price * count
+    const IncreaseQuantity=()=>{
+        setCount(count+1)
+        addToCart({...product,quantity:count})
+    }
+    const DeacreasQuntity=()=>{
+        if (count===0) {
+            removeFromCart(product.id)
+        }else{
+            setCount(count-1)
+        }
+    }
     return (
-        <tbody>
             <tr>
-                <td className="py-4">
-                    <div className="flex items-center">
-                        <img className="h-16 w-16 mr-4" src={product.cover} alt="Product image" />
+            <td className="py-4">
+            <div className="flex items-center">
+            <img className="h-16 w-16 mr-4" src={product.cover} alt="Product image" />
                         <span className="font-semibold"><Link to={`/product/${product.id}`}>{product.name}</Link></span>
-                    </div>
-                </td>
-                <td className="py-4">${product.price}</td>
-                <td className="py-4">
-                    <div className="flex items-center">
-                        <button className="border rounded-md py-2 px-4 mr-2">-</button>
+                        </div>
+                        </td>
+                        <td className="py-4">${product.price}</td>
+                        <td className="py-4">
+                        <div className="flex items-center">
+                        <button onClick={DeacreasQuntity} className="border rounded-md py-2 px-4 mr-2">-</button>
                         <span className="text-center w-8">{count}</span>
-                        <button onClick={()=>setCount(count+1)} className="border rounded-md py-2 px-4 ml-2">+</button>
+                        <button onClick={IncreaseQuantity} className="border rounded-md py-2 px-4 ml-2">+</button>
                     </div>
-                </td>
-                <td className="py-4">${totalPriceofproduct}</td>
-            </tr>
-        </tbody>
-    );
+                    </td>
+                    <td className="py-4">${totalPriceofproduct}</td>
+                    </tr>
+                
+                );
 }
 
 export default Basket_card;

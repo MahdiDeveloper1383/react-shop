@@ -49,11 +49,13 @@ const Cart_Shop = () => {
                                 <th className="text-left font-semibold">Total</th>
                             </tr>
                         </thead>
+                        <tbody>
                         {
-                            products.map((product)=>(
+                            products.map((product)=>product.quantity>0?(
                                 <Basket_card key={product.id} product={product}/>
-                            ))
+                            ):null)
                         }
+                        </tbody>
                     </table>
                 </div>
             </div>

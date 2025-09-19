@@ -11,6 +11,7 @@ import Cart_Shop from './Pages/Shop/Cart';
 import ProtectedRoute from './Components/Admin/ProtectedRoute';
 import AdminPanel from './Components/Admin/AdminPanel';
 import Providers from './provider';
+import Not_founded from './Pages/Shop/not-founded';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
                   <AdminPanel />
                 </ProtectedRoute>
               } />
+            <Route path='*' element={<Not_founded/>}/>
             </Routes>
           </BrowserRouter>
         </UserProvider>

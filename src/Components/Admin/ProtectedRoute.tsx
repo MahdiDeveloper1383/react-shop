@@ -13,7 +13,7 @@ const ProtectedRoute = ({ children,role }: ProtectedRouteProps) => {
   const { user } = useContext(UserContext);
 
   if (!user) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/*" replace />;
   }
 
   if (role && user.role !== role) {

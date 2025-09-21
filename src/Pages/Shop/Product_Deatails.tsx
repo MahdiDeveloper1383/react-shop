@@ -40,7 +40,7 @@ const Product_deatails = () => {
     <React.Fragment>
       <title>Product Details</title>
       <Header  />
-      <div className="bg-gray-100 w-full">
+      <div className="bg-gray-100 w-[648px] sm:w-full">
   <div className="container mx-auto px-4 py-8">
     <div className="flex flex-wrap -mx-4">
   

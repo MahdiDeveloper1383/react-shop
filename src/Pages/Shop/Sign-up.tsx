@@ -54,7 +54,7 @@ const SignUp = () => {
         <React.Fragment>
           <title>Sign Up</title>
             <Header/>
-            <section className="flex flex-col items-center pt-6">
+            <section className="flex flex-col items-center pt-6 sm:w-full w-[648px]">
   <div
     className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">

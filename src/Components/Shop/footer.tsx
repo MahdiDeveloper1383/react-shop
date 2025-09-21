@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 const Footer = () => {
     const navigate = useNavigate()
     return ( 
-        <footer className="flex flex-col space-y-10 justify-center w-full bg-gray-100 px-10 py-10">
+        <footer className="flex flex-col space-y-10 justify-center w-[648px] bg-gray-100 px-10 py-10 sm:w-full">
 
     <nav className="flex justify-center flex-wrap gap-6 text-gray-500 font-medium">
         <a className="hover:text-gray-900 cursor-pointer" onClick={()=>navigate('/')}>Home</a>

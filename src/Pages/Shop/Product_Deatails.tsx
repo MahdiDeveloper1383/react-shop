@@ -39,8 +39,8 @@ const Product_deatails = () => {
   return (
     <React.Fragment>
       <title>Product Details</title>
-      <Header />
-      <div className="bg-gray-100">
+      <Header  />
+      <div className="bg-gray-100 w-full">
   <div className="container mx-auto px-4 py-8">
     <div className="flex flex-wrap -mx-4">
   

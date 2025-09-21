@@ -15,7 +15,7 @@ const Header = () => {
         setUser(null)
     }
     return (
-     <div className="w-[648px] h-12  mb-4 sm:h-20 lg:w-full bg-slate-600 flex items-center justify-between px-5">
+     <div className="w-[648px] md:w-full h-12  mb-4 sm:h-20 lg:w-full bg-slate-600 flex items-center justify-between px-5">
       {/* Left side */}
       <ul className="flex flex-row gap-3 lg:gap-6 font-bold text-xl md:text-xl lg:text-2xl text-cyan-500">
         <li className="hover:text-white">

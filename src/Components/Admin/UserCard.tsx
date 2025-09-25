@@ -1,7 +1,7 @@
 import { useUser } from "../../Hooks/Useuser";
 import { User } from "../../Interfaces/user";
 
-const User_Card = ({ user }: { user: User }) => {
+const User_Card = ({ user,onEdit }: { user: User,onEdit: ()=>void }) => {
   const {deleteUser} = useUser()
   return (
     <tr>
@@ -13,7 +13,7 @@ const User_Card = ({ user }: { user: User }) => {
         <div className="flex flex-row gap-6 ml-auto mr-auto items-center justify-center">
           {user.id !== "1" && (
             <>
-              <button className="w-24 h-10 rounded-xl bg-blue-500 text-white hover:bg-blue-600">
+              <button onClick={onEdit} className="w-24 h-10 rounded-xl bg-blue-500 text-white hover:bg-blue-600">
                 Edit
               </button>
               <button

@@ -16,7 +16,7 @@ export const useUser = () => {
   // ======== Edit User ========
   const editUser = useMutation({
     mutationFn: ({ userId, userData }: { userId: string; userData: Partial<User> }) =>
-      axios.put(`/api/users/${userId}`, userData),
+      axios.put(`https://687a0739abb83744b7eb0c77.mockapi.io/users/${userId}`, userData),
     onSuccess: () => queryClient.invalidateQueries({queryKey:["users"]}),
     onError: (err) => console.error("Edit user failed:", err),
   });

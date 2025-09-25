@@ -9,7 +9,7 @@ import { UserProvider } from './contexts/UserContext';
 import { CartProvider } from './contexts/ProductContext';
 import Cart_Shop from './Pages/Shop/Cart';
 import ProtectedRoute from './Components/Admin/ProtectedRoute';
-import AdminPanel from './Components/Admin/AdminPanel';
+import Admin_panel from './Pages/Admin/Admin';
 import Providers from './provider';
 import Not_founded from './Pages/Shop/not-founded';
 
@@ -29,9 +29,7 @@ function App() {
               <Route path='/product/:id' element={<Product_deatails />} />
               <Route path='/cart' element={<Cart_Shop />} />
               <Route path='/admin' element={
-                <ProtectedRoute role='admin'>
-                  <AdminPanel />
-                </ProtectedRoute>
+                 <Admin_panel/>
               } />
             <Route path='*' element={<Not_founded/>}/>
             </Routes>

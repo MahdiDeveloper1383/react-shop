@@ -43,23 +43,25 @@ const Products_dashboard = () => {
                     <Product_Card key={product.id} Product={product}/>
                 ))}
             </tbody>
-              {Array.from(
-                { length: Math.ceil(Products.length / ItemPerPage) },
-                (_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => serCurrentPage(i + 1)}
-                    className={`px-3 py-1 rounded ${
-                      CurrentPage === i + 1
-                        ? "bg-blue-500 text-white"
-                        : "bg-gray-200"
-                    }`}
-                  >
-                    {i + 1}
-                  </button>
-                )
-              )}
           </table>
+          <div className="flex justify-center gap-2 mt-4">
+            {Array.from(
+              { length: Math.ceil(Products.length / ItemPerPage) },
+              (_, i) => (
+                <button
+                  key={i}
+                  onClick={() => serCurrentPage(i + 1)}
+                  className={`px-3 py-1 rounded ${
+                    CurrentPage === i + 1
+                      ? "bg-blue-500 text-white"
+                      : "bg-gray-200"
+                  }`}
+                >
+                  {i + 1}
+                </button>
+              )
+            )}
+          </div>
         </div>
      );
 }

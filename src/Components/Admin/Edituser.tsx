@@ -6,7 +6,6 @@ import { useUser } from "../../Hooks/Useuser";
 
 const EditUser = ({ user, onCancel }: {user:User,onCancel:()=>void}) => {
   const { editUser } = useUser();
-
   const [username, setUsername] = useState(user.username);
   const [email, setEmail] = useState(user.email);
   const [role, setRole] = useState(user.role);

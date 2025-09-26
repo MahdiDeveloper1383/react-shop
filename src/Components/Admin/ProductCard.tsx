@@ -1,7 +1,7 @@
 import { UseProduct } from "../../Hooks/UseProduct";
 import { IBook } from "../../Interfaces/Books";
 
-const Product_Card = ({Product}:{Product:IBook}) => {
+const Product_Card = ({Product,onEdit}:{Product:IBook,onEdit:()=>void}) => {
     const {deleteProduct} = UseProduct()
     return ( 
         <tr>
@@ -17,7 +17,9 @@ const Product_Card = ({Product}:{Product:IBook}) => {
                 </td>
                 <td className="border px-2 py-1">
                   <div className="flex flex-row gap-6 ml-auto mr-auto items-center justify-center">
-                    <button className="border w-24 h-10 rounded-xl bg-blue-500 text-white hover:bg-blue-600">
+                    <button 
+                    onClick={onEdit}
+                    className="border w-24 h-10 rounded-xl bg-blue-500 text-white hover:bg-blue-600">
                       Edit
                     </button>
                     <button 

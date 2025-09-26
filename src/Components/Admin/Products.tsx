@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import GetProduct from "../../Hooks/GetProducts";
 import Product_Card from "./ProductCard";
+import { IBook } from "../../Interfaces/Books";
 
+const EditProdcut = lazy(()=>import('./EditProduct'))
 
 const Products_dashboard = () => {
     const {data:Products = []} = GetProduct()
@@ -10,13 +12,23 @@ const Products_dashboard = () => {
         product.name.toLocaleLowerCase().includes(filterbook.toLocaleLowerCase())
       );
       const [CurrentPage, serCurrentPage] = useState(1);
+      const [editingProduct,setEditingProduct] = useState<IBook|null>(null)
       const ItemPerPage = 3;
       const indexofLastUser = ItemPerPage * CurrentPage;
       const indexofFirstUser = indexofLastUser - ItemPerPage;
       const CurrentBooks = filteredUsers.slice(indexofFirstUser, indexofLastUser);
     return ( 
          <div className="w-full h-screen flex flex-col border rounded-xl">
-          <div className="w-full min-h-24 bg-blue-500 rounded-xl flex flex-row items-center p-3 justify-between">
+           {editingProduct && (
+                  <Suspense
+                    fallback={<div className="text-center p-10">Loading editor...</div>}
+                  >
+                    <EditProdcut onCancel={() => setEditingProduct(null)} Product={editingProduct} />
+                  </Suspense>
+                )}
+          {!editingProduct &&(
+              <>
+              <div className="w-full min-h-24 bg-blue-500 rounded-xl flex flex-row items-center p-3 justify-between">
             <h4 className="text-4xl font-bold text-gray-600">Products</h4>
             <div className="flex flex-row items-center gap-4">
               <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition">
@@ -40,7 +52,10 @@ const Products_dashboard = () => {
             </thead>
             <tbody>
                 {CurrentBooks.map((product)=>(
-                    <Product_Card key={product.id} Product={product}/>
+                  <Product_Card 
+                  onEdit={()=>setEditingProduct(product)}
+                  key={product.id} 
+                  Product={product}/>
                 ))}
             </tbody>
           </table>
@@ -49,19 +64,21 @@ const Products_dashboard = () => {
               { length: Math.ceil(Products.length / ItemPerPage) },
               (_, i) => (
                 <button
-                  key={i}
-                  onClick={() => serCurrentPage(i + 1)}
-                  className={`px-3 py-1 rounded ${
-                    CurrentPage === i + 1
-                      ? "bg-blue-500 text-white"
-                      : "bg-gray-200"
+                key={i}
+                onClick={() => serCurrentPage(i + 1)}
+                className={`px-3 py-1 rounded ${
+                  CurrentPage === i + 1
+                  ? "bg-blue-500 text-white"
+                  : "bg-gray-200"
                   }`}
-                >
+                  >
                   {i + 1}
                 </button>
               )
             )}
           </div>
+            </>
+            ) }
         </div>
      );
 }

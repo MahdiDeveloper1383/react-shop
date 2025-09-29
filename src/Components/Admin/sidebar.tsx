@@ -1,4 +1,4 @@
-const Sidbar = () => {
+const Sidbar = ({onSetPage}:{onSetPage: (page:string) => void}) => {
     return ( 
         <div className="min-w-[220px] h-full bg-gray-200 rounded-2xl p-4 shadow-md">
         <ul className="flex flex-col gap-3">
@@ -13,6 +13,7 @@ const Sidbar = () => {
             <li
               key={index}
               className="flex items-center gap-3 p-2 rounded-lg cursor-pointer hover:bg-gray-300 transition-colors"
+              onClick={()=>onSetPage(item.name)}
             >
               <svg className="w-6 h-6 text-gray-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                 <path d={item.svg} />

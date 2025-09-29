@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Use_Slider from "../../Hooks/UseSlider";
 
 const Slider = () => {

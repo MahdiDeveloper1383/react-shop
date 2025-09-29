@@ -29,7 +29,9 @@ function App() {
               <Route path='/product/:id' element={<Product_deatails />} />
               <Route path='/cart' element={<Cart_Shop />} />
               <Route path='/admin' element={
+                <ProtectedRoute role='admin'>
                  <Admin_panel/>
+                </ProtectedRoute>
               } />
             <Route path='*' element={<Not_founded/>}/>
             </Routes>

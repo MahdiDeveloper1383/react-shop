@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import * as yup from 'yup'
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup"
-import GetUsers from "../../Hooks/Getusers";
 import Footer from "../../Components/Shop/footer";
 import { CreateUser } from "../../Hooks/Createuser";
 interface SignUpFormData {

@@ -1,17 +1,27 @@
 {
   "files": {
-    "main.css": "/react-shop/static/css/main.9dac2325.css",
-    "main.js": "/react-shop/static/js/main.aab097ca.js",
-    "static/js/876.f4d68d29.chunk.js": "/react-shop/static/js/876.f4d68d29.chunk.js",
+    "main.css": "/react-shop/static/css/main.31458949.css",
+    "main.js": "/react-shop/static/js/main.854fc634.js",
+    "static/js/697.3fe8d8cf.chunk.js": "/react-shop/static/js/697.3fe8d8cf.chunk.js",
+    "static/js/702.2aa21f5f.chunk.js": "/react-shop/static/js/702.2aa21f5f.chunk.js",
+    "static/js/840.689cf99e.chunk.js": "/react-shop/static/js/840.689cf99e.chunk.js",
     "static/js/453.2a86c8f1.chunk.js": "/react-shop/static/js/453.2a86c8f1.chunk.js",
+    "static/js/876.f4d68d29.chunk.js": "/react-shop/static/js/876.f4d68d29.chunk.js",
+    "static/js/18.9bb64ffc.chunk.js": "/react-shop/static/js/18.9bb64ffc.chunk.js",
+    "static/js/192.0644ff55.chunk.js": "/react-shop/static/js/192.0644ff55.chunk.js",
     "index.html": "/react-shop/index.html",
-    "main.9dac2325.css.map": "/react-shop/static/css/main.9dac2325.css.map",
-    "main.aab097ca.js.map": "/react-shop/static/js/main.aab097ca.js.map",
+    "main.31458949.css.map": "/react-shop/static/css/main.31458949.css.map",
+    "main.854fc634.js.map": "/react-shop/static/js/main.854fc634.js.map",
+    "697.3fe8d8cf.chunk.js.map": "/react-shop/static/js/697.3fe8d8cf.chunk.js.map",
+    "702.2aa21f5f.chunk.js.map": "/react-shop/static/js/702.2aa21f5f.chunk.js.map",
+    "840.689cf99e.chunk.js.map": "/react-shop/static/js/840.689cf99e.chunk.js.map",
+    "453.2a86c8f1.chunk.js.map": "/react-shop/static/js/453.2a86c8f1.chunk.js.map",
     "876.f4d68d29.chunk.js.map": "/react-shop/static/js/876.f4d68d29.chunk.js.map",
-    "453.2a86c8f1.chunk.js.map": "/react-shop/static/js/453.2a86c8f1.chunk.js.map"
+    "18.9bb64ffc.chunk.js.map": "/react-shop/static/js/18.9bb64ffc.chunk.js.map",
+    "192.0644ff55.chunk.js.map": "/react-shop/static/js/192.0644ff55.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9dac2325.css",
-    "static/js/main.aab097ca.js"
+    "static/css/main.31458949.css",
+    "static/js/main.854fc634.js"
   ]
 }

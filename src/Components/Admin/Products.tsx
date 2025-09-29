@@ -4,7 +4,7 @@ import Product_Card from "./ProductCard";
 import { IBook } from "../../Interfaces/Books";
 
 const EditProdcut = lazy(()=>import('./EditProduct'))
-
+const Add_Product = lazy(()=>import('./Add_Product'))
 const Products_dashboard = () => {
     const {data:Products = []} = GetProduct()
      const [filterbook, setbookfilter] = useState<string>("");
@@ -13,25 +13,35 @@ const Products_dashboard = () => {
       );
       const [CurrentPage, serCurrentPage] = useState(1);
       const [editingProduct,setEditingProduct] = useState<IBook|null>(null)
+      const [AddProduct,setAddproduct] = useState<boolean>(false)
       const ItemPerPage = 3;
       const indexofLastUser = ItemPerPage * CurrentPage;
       const indexofFirstUser = indexofLastUser - ItemPerPage;
       const CurrentBooks = filteredUsers.slice(indexofFirstUser, indexofLastUser);
     return ( 
          <div className="w-full h-screen flex flex-col border rounded-xl">
-           {editingProduct && (
+           {editingProduct && !AddProduct && (
                   <Suspense
                     fallback={<div className="text-center p-10">Loading editor...</div>}
                   >
                     <EditProdcut onCancel={() => setEditingProduct(null)} Product={editingProduct} />
                   </Suspense>
-                )}
-          {!editingProduct &&(
+            )}
+            {
+              AddProduct && !editingProduct && (
+                <Suspense fallback={<div className="text-center p-10">Loading editor...</div>}>
+                  <Add_Product onCancel = {() => setAddproduct(false)}/>
+                </Suspense>
+              )
+            }
+          {!editingProduct && !AddProduct &&(
               <>
               <div className="w-full min-h-24 bg-blue-500 rounded-xl flex flex-row items-center p-3 justify-between">
             <h4 className="text-4xl font-bold text-gray-600">Products</h4>
             <div className="flex flex-row items-center gap-4">
-              <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition">
+              <button 
+              onClick={()=>setAddproduct(true)}
+              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition">
                 Add Product
               </button>
               <input

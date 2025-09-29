@@ -21,13 +21,12 @@ const schema = yup.object({
     lastName:yup.string().required('Lastname is required'),
     username:yup.string().min(3,'Username must be more than 3').max(12,'Username is too long').required('Username is required'),
     email:yup.string().test("is-gmail", "email must be end by @gmail.com", (value) =>
-      value ? value.toLowerCase().endsWith("@gmail.com") : false).required('Email is required'),
+     value ? value.toLowerCase().endsWith("@gmail.com") : false).required('Email is required'),
     location:yup.string().required('City is required'),
     password:yup.string().min(8,'Password must be at least 8 characters').max(20,'Password must be at most 20 characters').matches(/[a-z]/,'Password must have a lowercase letter').matches(/[A-Z]/,'Password must have an uppercase letter').matches(/[0-9]/,'Password must have a number').matches(/[!@#$%^&*]/,'Password must have a special character').required("Password is required"),
     repassword:yup.string().oneOf([yup.ref('password')],'Passwords must match').required('Please confirm your password')
   })
 const SignUp = () => {
-  const {data:users = []} = GetUsers()
   const createuser = CreateUser()
   const {register,handleSubmit,formState:{errors}} = useForm({
     resolver: yupResolver(schema)

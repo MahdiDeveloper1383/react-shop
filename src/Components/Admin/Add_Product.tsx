@@ -230,7 +230,6 @@ const Add_Product = ({ onCancel }: { onCancel: () => void }) => {
             onChange={handleChange}
             className="p-3 rounded-xl border focus:outline-none focus:ring-2 focus:ring-green-400"
             placeholder="Enter rating (0-5)..."
-            max={5}
             min={0}
           />
         </div>
